@@ -11,7 +11,7 @@ const NavBarMenuComponent = props => {
           <Icon loading name="wifi" />
         </Menu.Item>
         <Menu.Item onClick={props.handleItemClick} name="logo">
-          <Header inverted>WISH MISH</Header>
+          <Header inverted>Bear Bear</Header>
         </Menu.Item>
         <Menu.Item
           as={Link}

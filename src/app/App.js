@@ -23,6 +23,8 @@ class App extends Component {
           <NavBarContainer />
           <Container style={{ marginTop: "100px", minHeight: "85vh" }}>
             <Switch>
+              <Route exact path="/signup" component={SignUpMainContainer} />
+              <Route exact path="/about" component={AboutComponent} />
               <Route exact path="/app" component={HomePageContainer} />
               <Redirect to="/app" />
             </Switch>
