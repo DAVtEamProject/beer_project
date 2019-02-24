@@ -10,12 +10,18 @@ import logger from "redux-logger";
 import { reduxFirestore, getFirestore } from "redux-firestore";
 import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
 import fbConfig from "./config/fbConfig";
+import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 
 /* eslint-disable no-underscore-dangle */
-const ext = window.__REDUX_DEVTOOLS_EXTENSION__;
-const devtoolMiddleware = ext && ext();
+// can be issue as composer expected a function
+// const devtoolMiddleware =
+//   process.env.NODE_ENV === "development"
+//     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
+//       window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
+//     : null;
+
 /* eslint-enable */
-// thunk.withExtraArgument({ getFirebase, getFirestore })
+thunk.withExtraArgument({ getFirebase, getFirestore });
 const store = createStore(
   rootReducer,
   compose(
@@ -29,7 +35,7 @@ const store = createStore(
       userProfile: "users",
       attachAuthIsReady: true
     }),
-    devtoolMiddleware
+    composeWithDevTools
   )
 );
 
