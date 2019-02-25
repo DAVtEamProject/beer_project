@@ -7,8 +7,13 @@ export default {
     marginTop: "0em",
     transition: "box-shadow 0.5s ease, padding 0.5s ease"
   },
-  fixedMenuStyle: {
+  fixedMenuStyleWithoutShadow: {
+    borderRadius: 0,
+    boxShadow: "none",
+    border: "none"
+  },
+  fixedMenuStyleWithShadow: {
     boxShadow: "0px 3px 5px rgba(0, 0, 0, 0.2)",
-    marginBottom: "100px"
+    transition: "box-shadow 0.5s ease, padding 0.5s ease"
   }
 };
