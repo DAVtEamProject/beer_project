@@ -34,8 +34,7 @@ const store = createStore(
       useFirestoreForProfile: true,
       userProfile: "users",
       attachAuthIsReady: true
-    }),
-    composeWithDevTools
+    })
   )
 );
 
