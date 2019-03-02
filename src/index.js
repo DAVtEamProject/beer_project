@@ -21,24 +21,22 @@ import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 //     : null;
 
 /* eslint-enable */
-thunk.withExtraArgument({ getFirebase, getFirestore });
-const store = createStore(
-  rootReducer,
-  compose(
-    applyMiddleware(
-      thunk.withExtraArgument({ getFirebase, getFirestore }),
-      logger
-    ),
-    reduxFirestore(fbConfig),
-    reactReduxFirebase(fbConfig, {
-      useFirestoreForProfile: true,
-      userProfile: "users",
-      attachAuthIsReady: true
-    })
-  )
+const composerMix = compose(
+  applyMiddleware(
+    thunk.withExtraArgument({ getFirebase, getFirestore }),
+    logger
+  ),
+  reduxFirestore(fbConfig),
+  reactReduxFirebase(fbConfig, {
+    useFirestoreForProfile: true,
+    userProfile: "users",
+    attachAuthIsReady: true
+  })
 );
 
-// render(<App />);
+const store = window.devToolsExtension
+  ? window.devToolsExtension()(createStore(rootReducer, composerMix))
+  : createStore(rootReducer, composerMix);
 
 store.firebaseAuthIsReady.then(() => {
   render(<Main />, document.getElementById("root"));
