@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import SignUpMainComponent from "./SignUpMainComponent";
-// import { authOperations } from "../apis/auth-duck-api";
+import { authOperations } from "../apis/auth";
 
 const mapStateToProps = state => {
   return {
@@ -11,8 +11,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   const signup = signupPayload => {
     console.log("signupContiner-> signupPayload: ", signupPayload);
-    //dispatch(submitWishOperations.submitWishOperation(loginFormData));
-    // dispatch(authOperations.signupOperation(signupPayload));
+    // dispatch(submitWishOperations.submitWishOperation(loginFormData));
+    dispatch(authOperations.signupOperation(signupPayload));
   };
 
   return {

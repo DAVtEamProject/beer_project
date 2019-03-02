@@ -22,7 +22,7 @@ const NavBarMenuComponent = props => {
             exact
             to="/app"
           >
-            <Header>Knowledge Base</Header>
+            <Header>Travers</Header>
           </Menu.Item>
           <Menu.Menu position="right">
             <Menu.Item />
